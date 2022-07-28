@@ -1,1 +1,1 @@
-Muy buenas mi gente, los amo
+Mi portafolio es publico y libre de derechos de autor, Si te gusta puedes usarlo sin problema
