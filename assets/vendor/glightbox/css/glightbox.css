@@ -91,7 +91,8 @@
 
 .glightbox-container .ginner-container {
   position: relative;
-  width: 100%;
+  width: 80%;
+  height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -104,11 +105,11 @@
   flex-direction: column;
   max-width: 100%;
   margin: auto;
-  height: 100vh;
+  
 }
 
 .glightbox-container .ginner-container.gvideo-container {
-  width: 100%;
+  width: 90%;
 }
 
 .glightbox-container .ginner-container.desc-bottom,
@@ -121,7 +122,7 @@
 
 .glightbox-container .ginner-container.desc-left,
         .glightbox-container .ginner-container.desc-right {
-  max-width: 100% !important;
+  max-width: 90% !important;
 }
 
 .gslide iframe,
@@ -844,8 +845,8 @@ iframe.wait-autoplay {
 
 @media (min-width: 769px) {
   .glightbox-container .ginner-container {
-    width: auto;
-    height: auto;
+    width: 80%;
+    height: 80%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;

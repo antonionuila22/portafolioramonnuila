@@ -11,8 +11,8 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #040404 url("../img/bg.jpg") top right no-repeat;
-  background-size: cover;
+  background: #040404 url(../img/bg.jpg) 85% 0% no-repeat;
+  background-size: auto 100%;
   left: 0;
   right: 0;
   top: 0;
@@ -791,6 +791,12 @@ section .container {
 .portfolio .portfolio-wrap:hover .portfolio-info::after {
   bottom: 15px;
   right: 15px;
+}
+
+.websites{
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 /*--------------------------------------------------------------
