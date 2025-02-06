@@ -65,16 +65,6 @@ a:hover {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  font-family: "Raleway", sans-serif;
-}
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -1254,13 +1244,12 @@ section .container {
   color: #fff;
 }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-ul {
-  font-family: 'Montserrat';
+p {
+  font-family: "Poppins", sans-serif;
 }
