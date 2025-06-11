@@ -525,6 +525,9 @@ section .container {
   background-color: #18d26e;
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Interests
 --------------------------------------------------------------*/
@@ -1252,4 +1255,101 @@ h5,
 h6,
 p {
   font-family: "Poppins", sans-serif;
+}
+
+.swiper {
+  width: 100%;
+  height: 100vh;
+  padding: 0 5px;
+  /* para mantener márgenes laterales */
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.swiper-slide:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.swiper-slide:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+}
+
+.text h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.text p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Swiper navigation */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .swiper {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    clip-path: none;
+    border-radius: 8px;
+  }
+
+  .swiper {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    height: 50vh;
+  }
+
+  .text h2 {
+    font-size: 1.2rem;
+  }
+
+  .text p {
+    font-size: 0.9rem;
+  }
 }

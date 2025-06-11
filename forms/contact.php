@@ -1,41 +1,72 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'ramonnuia22@gmail.com';
+/**
+ * Secure PHP Email Form Handler
+ * Based on BootstrapMade's PHP Email Form
+ */
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Dirección de correo que recibirá los mensajes
+$receiving_email_address = 'ramonnuia22@gmail.com';
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// Verifica si la librería está disponible
+if (!file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
+  die('Unable to load the "PHP Email Form" Library!');
+}
+include($php_email_form);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+// Función para detectar inyección de encabezados
+function has_header_injection($str)
+{
+  return preg_match("/[\r\n]/", $str);
+}
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+// Sanitización y validación básica de entradas
+$name = htmlspecialchars(trim($_POST['name'] ?? ''));
+$email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
+$message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
-  echo $contact->send();
-?>
+// Validaciones
+if (empty($name) || empty($email) || empty($message)) {
+  die('All fields are required.');
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  die('Invalid email address.');
+}
+
+if (has_header_injection($name) || has_header_injection($email)) {
+  die('Header injection detected.');
+}
+
+// Instancia del formulario
+$contact = new PHP_Email_Form;
+$contact->ajax = true;
+
+$contact->to = $receiving_email_address;
+$contact->from_name = $name;
+$contact->from_email = $email;
+$contact->subject = $subject;
+
+// Si querés usar SMTP, descomentá y configurá esto:
+/*
+$contact->smtp = array(
+  'host' => 'smtp.tuservidor.com',
+  'username' => 'tuusuario',
+  'password' => 'tucontraseña',
+  'port' => '587'
+);
+*/
+
+// Cuerpo del mensaje
+$contact->add_message($name, 'From');
+$contact->add_message($email, 'Email');
+$contact->add_mess_age($subject, 'Subject');
+$contact->add_message($message, 'Message', 10);
+// Envío del mensaje
+if ($contact->send()) {
+  echo 'Message sent successfully!';
+} else {
+  echo 'Failed to send message. Please try again later.';
+}
+// Fin del script
