@@ -241,4 +241,33 @@
     }
   });
 
+  /**
+   * Lazy load iframes - Load only when visible
+   */
+  const lazyIframes = document.querySelectorAll('iframe[data-src]');
+
+  if ('IntersectionObserver' in window) {
+    const iframeObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target;
+          iframe.src = iframe.dataset.src;
+          iframe.removeAttribute('data-src');
+          observer.unobserve(iframe);
+        }
+      });
+    }, {
+      rootMargin: '100px'
+    });
+
+    lazyIframes.forEach(iframe => {
+      iframeObserver.observe(iframe);
+    });
+  } else {
+    // Fallback for older browsers
+    lazyIframes.forEach(iframe => {
+      iframe.src = iframe.dataset.src;
+    });
+  }
+
 })()
