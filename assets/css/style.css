@@ -2,9 +2,9 @@
 # General
 --------------------------------------------------------------*/
 :root {
-  --primary-color: #6366f1;
-  --primary-hover: #818cf8;
-  --secondary-color: #8b5cf6;
+  --primary-color: #10b981;
+  --primary-hover: #34d399;
+  --secondary-color: #059669;
   --accent-color: #06b6d4;
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.8);
@@ -226,7 +226,7 @@ a:hover {
 #header .social-links a:hover {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
 }
 
 @media (max-width: 992px) {
@@ -617,7 +617,7 @@ section .container {
 
 .counts .count-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
   border-color: var(--primary-color);
 }
 
@@ -632,7 +632,7 @@ section .container {
   color: #fff;
   border-radius: 50px;
   line-height: 0;
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .counts .count-box span {
@@ -650,41 +650,102 @@ section .container {
 }
 
 /*--------------------------------------------------------------
-# Skills
+# Skills - Tech Cards
 --------------------------------------------------------------*/
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+.skills .tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
 }
 
-.skills .progress .skill {
-  padding: 10px 0;
-  margin: 0;
-  text-transform: uppercase;
-  display: block;
+.skills .tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skills .tech-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+}
+
+.skills .tech-card i {
+  font-size: 36px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.skills .tech-card img.tech-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.skills .tech-card:hover i {
+  transform: scale(1.15);
+  filter: none;
+}
+
+.skills .tech-card:hover img.tech-icon {
+  transform: scale(1.15);
+  filter: none;
+}
+
+.skills .tech-card span {
+  font-size: 13px;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
   font-family: "Poppins", sans-serif;
-  color: #fff;
 }
 
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
+.skills .skills-category {
+  margin-bottom: 30px;
 }
 
-.skills .progress-bar-wrap {
-  background: rgba(255, 255, 255, 0.2);
+.skills .skills-category h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
-  border-radius: 5px;
+@media (max-width: 576px) {
+  .skills .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .skills .tech-card {
+    padding: 16px 8px;
+  }
+
+  .skills .tech-card i {
+    font-size: 28px;
+  }
+
+  .skills .tech-card span {
+    font-size: 11px;
+  }
 }
 
 
@@ -724,7 +785,7 @@ section .container {
   background: var(--glass-bg);
   border-color: var(--primary-color);
   transform: translateX(5px);
-  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
 }
 
 .interests .icon-box:hover i {
@@ -874,7 +935,7 @@ section .container {
   top: 0;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border: 2px solid var(--primary-color);
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
 /*--------------------------------------------------------------
@@ -902,7 +963,7 @@ section .container {
   justify-content: center;
   margin-bottom: 20px;
   transform-style: preserve-3d;
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .services .icon-box .icon i {
@@ -942,10 +1003,10 @@ section .container {
 }
 
 .services .icon-box:hover {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(139, 92, 246, 0.1));
   border-color: var(--primary-color);
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
 }
 
 .services .icon-box:hover .icon {
@@ -1006,7 +1067,7 @@ section .container {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -1267,7 +1328,7 @@ section .container {
 .contact .info-box:hover {
   transform: translateY(-5px);
   border-color: var(--primary-color);
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
 }
 
 .contact .info-box i.bx {
@@ -1277,7 +1338,7 @@ section .container {
   padding: 14px;
   float: left;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .contact .info-box h3 {
@@ -1414,13 +1475,13 @@ section .container {
   transition: 0.4s;
   border-radius: 8px;
   font-weight: 600;
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
 }
 
 .contact .php-email-form button[type=submit]:hover {
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
 }
 
 @-webkit-keyframes animate-loading {
